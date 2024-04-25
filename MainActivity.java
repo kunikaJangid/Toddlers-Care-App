@@ -21,3 +21,25 @@ public class  MainActivity extends AppCompatActivity {
 bottomNavigationView.setSelectedItemId(R.id.home); 
          
 bottomNavigationView.setOnNavigationItemReselectedListe ner(item -> { 
+
+
+            switch (item.getItemId()) { 
+                case R.id.home: 
+                    return;                 case R.id.profile:                     startActivity(new 
+Intent(getApplicationContext(), profile.class));                     overridePendingTransition(0,0); 
+            } 
+        }); 
+    } 
+ 
+    @Override 
+    protected void onStart() {         super.onStart(); 
+        FirebaseUser user = mAuth.getCurrentUser();         if(user == null) 
+        { 
+            startActivity(new Intent(MainActivity.this, login_page.class)); 
+        } 
+    }  
+    public void Onclick(View view) {         startActivity(new 
+Intent(MainActivity.this,doctors_list.class)); 
+    } 
+} 
+ 	
